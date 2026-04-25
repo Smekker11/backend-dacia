@@ -1,14 +1,12 @@
-import express from 'express';
+import express from 'express';  
+import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { Sequelize, DataTypes } from 'sequelize';
 import * as prompts from './prompts/index.js';
+import { fileURLToPath } from 'url';
 import { generate } from './gemini.js';
-import { UserInterests } from './db-instance.js';
+import { UserInterests,sequelize } from './db-instance.js';
 import { handle, findInterests, generateRandomId, generateRandomIp } from './methods.api.js';
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import dotenv from 'dotenv'
 
 dotenv.config();
 
@@ -36,7 +34,7 @@ app.post('/api/skynetapi', async (req, res) =>
 	{
 		const results = await UserInterests.findAll(
 		{
-			where: Sequelize.literal(`
+			where: sequelize.literal(`
 			EXISTS (
 			SELECT 1
 			FROM json_each(interests)
