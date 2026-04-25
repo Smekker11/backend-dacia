@@ -6,11 +6,7 @@ let cardsHolderInterests = document.getElementById("pick-interests").getElements
 
 export const ParseSearches = () =>
 {
-	let obj =
-	{
-		"cities": [],
-		"interests": [],
-	};
+	let obj = { "cities": [], "interests": [] };
 
 	searchCities.forEach(element => { obj.cities.push(element.name); });
 	searchInterests.forEach(element => { obj.interests.push(element.name); });
@@ -61,8 +57,6 @@ const AddCitySearch = (cityName) =>
 	card.obj = elem;
 
 	searchCities.push(card);
-
-	console.warn("ADDED " + cityName, searchCities);
 };
 
 const AddInterestSearch = (interestName) =>
@@ -97,8 +91,6 @@ const AddInterestSearch = (interestName) =>
 	card.obj = elem;
 
 	searchInterests.push(card);
-
-	console.warn("ADDED " + interestName, searchInterests);
 };
 
 const RemoveCitySearch = (cityName) =>
@@ -117,8 +109,6 @@ const RemoveCitySearch = (cityName) =>
 
 	cardsHolderCities.removeChild(searchCities[index].obj);
 	searchCities.splice(index, 1);
-
-	console.warn("REMOVED " + cityName, searchCities);
 };
 
 const RemoveInterestSearch = (interestName) =>
@@ -137,8 +127,6 @@ const RemoveInterestSearch = (interestName) =>
 
 	cardsHolderInterests.removeChild(searchInterests[index].obj);
 	searchInterests.splice(index, 1);
-
-	console.warn("REMOVED " + interestName, searchInterests);
 };
 
 const inputCity = document.getElementById("search-cities");

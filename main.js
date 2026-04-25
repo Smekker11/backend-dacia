@@ -56,7 +56,7 @@ app.post('/api/city/:city', async (req, res) =>
 {
 	await handle(req, res, async () =>
 	{
-		return await generate(prompts.whatAbout(req.params.city, req.body.interests));
+		return await generate(prompts.promptForCity(req.params.city, req.body.interests));
 	});
 });
 
@@ -71,14 +71,23 @@ app.post('/api/cities', async (req, res) =>
 			interests: req.body.interests
 		});
 
-		const result = await generate(prompts.whatAboutAll(req.body.cities, req.body.interests));
+		const result = await generate(prompts.promptForCities(req.body.cities, req.body.interests));
 		const rawText = result.candidates[0].content.parts[0].text;
 
-		console.log(result);
-		console.log(rawText);
-		console.log(JSON.parse(rawText));
+		try
+		{
+			res.json(JSON.parse(rawText));
+		}
+		catch (err)
+		{
+			/*
+			console.log(result);
+			console.log(rawText);
+			*/
 
-		res.json(JSON.parse(rawText));
+			console.error(err);
+			res.status(500).json({ error: "Internal Server Error" });
+		}
 	}
 	catch (err)
 	{

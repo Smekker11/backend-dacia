@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <!--
 	COLORS:
-	Golden blodne	#fbe7a1 -> cards
-	Pearl white		#f8f6f0 -> general
-	Earth blue #23b3be -> side menu, titles
+	#fbe7a1 - GOLDEN BLONDE - cards
+	#f8f6f0 - PEARL WHITE - general
+	#23b3be - EARTH BLUE - important
 -->
 
-<!-- <html lang="en"> -->
-<html>
+<html lang="en">
 <head>
-	<!-- WARNING: add a name later -->
-	<title>[namespace]</title>
+	<title>Activ Globe</title>
+	<link rel="icon" href="./icons/icon.ico" type="image/x-icon">
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +84,9 @@
 		<div id="results" class="page hidden">
 			<h1>Here's what you might be looking for:</h1>
 
-			<div id="results-container"></div>
+			<div id="results-container">
+				<h2>Loading results...</h2>
+			</div>
 		</div>
 
 		<div id="interest-best-cities" class="page hidden">
@@ -103,7 +104,7 @@
 		<div id="info" class="page hidden">
 			<h1>Info</h1>
 
-			<!-- TODO: at least add some fillers -->
+			<!-- TODO: add code cards -->
 		</div>
 	</main>
 
@@ -115,8 +116,7 @@
 	<script src="./scripts/index.js" type="module"></script>
 	<script src="./scripts/nav.js" type="module"></script>
 	<script src="./scripts/home-page.js" type="module"></script>
-	<script src="./scripts/cities-page.js" type="module"></script>
-	<script src="./scripts/interests-page.js" type="module"></script>
+	<script src="./scripts/search-pages.js" type="module"></script>
 	<script src="./scripts/fetching.js" type="module"></script>
 	<script src="./scripts/search.js" type="module"></script>
 	<script src="./scripts/results.js" type="module"></script>
