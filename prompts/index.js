@@ -22,7 +22,7 @@ export function whatAbout(city, addinterests)
 	This will be used in a website that helps people choose a city to move in. `;
 
 	prompt += `The format of the text should be the following: 
-	[{ name: "CITY_NAME", interests: [{ name: "INTEREST_NAME", text: "INTEREST_TEXT" }] }], 
+	[{ \"name\": "CITY_NAME", \"interests\": [{ \"name\": "INTEREST_NAME", \"text\": "INTEREST_TEXT" }] }], 
 	where CITY_NAME must be the name of the respective city,
 	INTEREST_NAME must be the name of the respective interest,
 	INTEREST_TEXT must be the text of the respective itnerest.

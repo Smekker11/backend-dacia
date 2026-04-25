@@ -1,4 +1,4 @@
-import express from 'express';  
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
@@ -73,6 +73,10 @@ app.post('/api/cities', async (req, res) =>
 
 		const result = await generate(prompts.whatAboutAll(req.body.cities, req.body.interests));
 		const rawText = result.candidates[0].content.parts[0].text;
+
+		console.log(result);
+		console.log(rawText);
+		console.log(JSON.parse(rawText));
 
 		res.json(JSON.parse(rawText));
 	}
