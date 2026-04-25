@@ -3,9 +3,16 @@ import { DeleteSearches, ParseSearches } from "./search.js";
 import { FetchCities } from "./fetching.js";
 import { VisualizeData } from "./results.js";
 
-const buttonSearch = document.getElementById("search-interests-icon");
+const buttonSearchCity = document.getElementById("search-cities-icon");
 
-buttonSearch.addEventListener("click", () =>
+buttonSearchCity.addEventListener("click", () =>
+{
+	LoadPage("pick-interests");
+});
+
+const buttonSearchInterest = document.getElementById("search-interests-icon");
+
+buttonSearchInterest.addEventListener("click", () =>
 {
 	LoadPage("results");
 

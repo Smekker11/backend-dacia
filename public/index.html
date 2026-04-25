@@ -1,16 +1,16 @@
 <!DOCTYPE html>
+
 <!--
 	COLORS:
-	Golden blodne	#fbe7a1 -> cards
-	Pearl white		#f8f6f0 -> general
-	Earth blue #23b3be -> side menu, titles
+	#fbe7a1 - GOLDEN BLONDE - cards
+	#f8f6f0 - PEARL WHITE - general
+	#23b3be - EARTH BLUE - important
 -->
 
-<!-- <html lang="en"> -->
-<html>
+<html lang="en">
 <head>
-	<!-- WARNING: add a name later -->
-	<title>[namespace]</title>
+	<title>Activ Globe</title>
+	<link rel="icon" href="./icons/icon.ico" type="image/x-icon">
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,107 +18,221 @@
 	<link rel="stylesheet" href="./css/index.css">
 	<link rel="stylesheet" href="./css/nav.css">
 	<link rel="stylesheet" href="./css/content.css">
+	<link rel="stylesheet" href="./css/api.css">
 </head>
 <body>
-	<nav id="nav">
-		<button id="nav-home">
-			<img src="./icons/home-2.svg"></img>
-		</button>
+<nav id="nav">
+	<button id="nav-home">
+		<img src="./icons/home-2.svg"></img>
+	</button>
+
+	<br>
+
+	<button id="nav-edu">
+		<img src="./icons/education-2.svg"></img>
+	</button>
+	<button id="nav-work">
+		<img src="./icons/work-2.svg"></img>
+	</button>
+	<button id="nav-travel">
+		<img src="./icons/travel-2.svg"></img>
+	</button>
+
+	<br>
+
+	<button id="nav-info">
+		<img src="./icons/info-2.svg"></img>
+	</button>
+</nav>
+
+<main id="content">
+	<div id="home" class="page">
+		<h1>Ready to check out a new city?</h1>
 
 		<br>
+		<h2 id="home-message"></h2>
+		<button id="goto-pick-cities" class="button">Get started</button>
+		<a href="./info.html">goto info</a>
+		<br>
+	</div>
 
-		<button id="nav-edu">
-			<img src="./icons/education-2.svg"></img>
-		</button>
-		<button id="nav-work">
-			<img src="./icons/work-2.svg"></img>
-		</button>
-		<button id="nav-travel">
-			<img src="./icons/travel-2.svg"></img>
-		</button>
+	<div id="pick-cities" class="page hidden">
+		<h1>Pick cities you want to explore.</h1>
 
 		<br>
-
-		<button id="nav-info">
-			<img src="./icons/info-2.svg"></img>
-		</button>
-	</nav>
-
-	<main id="content">
-		<div id="home" class="page">
-			<h1>Ready to check out a new city?</h1>
-
-			<br>
-			<h2 id="home-message"></h2>
-			<button id="goto-pick-cities" class="button">Get started</button>
-			<br>
+		<h2>Just enter the names of the cities you want to learn more about, one by one.</h2>
+		<div class="search-bar">
+			<input type="text" id="search-cities">
+			<img src="./icons/search-2.svg" id="search-cities-icon">
 		</div>
+		<br>
+		
+		<div class="cards-holder"></div>
+	</div>
 
-		<div id="pick-cities" class="page hidden">
-			<h1>Pick cities you want to explore.</h1>
+	<div id="pick-interests" class="page hidden">
+		<h1>Pick your interests.</h1>
 
-			<br>
-			<h2>Just enter the names of the cities you want to learn more about, one by one.</h2>
-			<div class="search-bar">
-				<input type="text" id="search-cities">
-				<img src="./icons/search-2.svg" id="search-cities-icon">
-			</div>
-			<br>
-			
-			<div class="cards-holder"></div>
+		<br>
+		<h2>What are you looking for in a new city? Type interests like 'education', 'work', and so on, one by one.</h2>
+		<div class="search-bar">
+			<input type="text" id="search-interests">
+			<img src="./icons/search-2.svg" id="search-interests-icon">
 		</div>
+		<br>
 
-		<div id="pick-interests" class="page hidden">
-			<h1>Pick your interests.</h1>
+		<div class="cards-holder"></div>
+	</div>
 
-			<br>
-			<h2>What are you looking for in a new city? Type interests like 'education', 'work', and so on, one by one.</h2>
-			<div class="search-bar">
-				<input type="text" id="search-interests">
-				<img src="./icons/search-2.svg" id="search-interests-icon">
-			</div>
-			<br>
+	<div id="results" class="page hidden">
+		<h1>Here's what you might be looking for:</h1>
 
-			<div class="cards-holder"></div>
+		<div id="results-container">
+			<h2>Loading results...</h2>
 		</div>
+	</div>
 
-		<div id="results" class="page hidden">
-			<h1>Here's what you might be looking for:</h1>
+	<div id="interest-best-cities" class="page hidden">
+		<h1>Best in [X]</h1>
 
-			<div id="results-container"></div>
-		</div>
+		<!-- TODO: add cards according to results**** -->
+	</div>
 
-		<div id="interest-best-cities" class="page hidden">
-			<h1>Best in [X]</h1>
+	<div id="city-best-interests" class="page hidden">
+		<h1>[X] is better at</h1>
 
-			<!-- TODO: add cards according to results**** -->
-		</div>
+		<!-- TODO: add cards according to results*** -->
+	</div>
 
-		<div id="city-best-interests" class="page hidden">
-			<h1>[X] is better at</h1>
+	<div id="info" class="page hidden">
+		<h1>API Endpoints</h1>
 
-			<!-- TODO: add cards according to results*** -->
-		</div>
+<div class="api-docs" id="api-docs">
 
-		<div id="info" class="page hidden">
-			<h1>Info</h1>
+  <!-- Endpoint 1 -->
+  <div class="endpoint" onclick="toggle(this)">
+    <div class="endpoint-header">
+      <div class="endpoint-left">
+        <span class="method-badge post">POST</span>
+        <span class="endpoint-path">/api/city/:city</span>
+      </div>
+      <span class="endpoint-summary">AI analysis for a single city + interests</span>
+      <span class="chevron">&#9658;</span>
+    </div>
+    <div class="endpoint-body">
+      <div class="section-label">Request Body</div>
+      <div class="code-block"><span class="code-punct">{</span>
+  <span class="code-key">"interests"</span><span class="code-punct">:</span> <span class="code-str">["metal", "automation"]</span>
+<span class="code-punct">}</span></div>
 
-			<!-- TODO: at least add some fillers -->
-		</div>
-	</main>
+      <div class="section-label">Parameters</div>
+      <div class="param-row">
+        <span class="param-name">city</span>
+        <span class="param-type">string</span>
+        <span class="param-desc">City name to analyze — passed as a URL parameter</span>
+        <span class="param-required">required</span>
+      </div>
+      <div class="param-row">
+        <span class="param-name">interests</span>
+        <span class="param-type">string[]</span>
+        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+        <span class="param-required">required</span>
+      </div>
 
-	<video id="background" autoplay muted loop>
-		<source src="./backgrounds/globe-whole.mp4" type="video/mp4">
-	</video>
-	<div id ="bg"></div>
+      <div class="section-label">Response — 200</div>
+      <div class="code-block">Gemini-generated city + interest profile object</div>
+    </div>
+  </div>
 
-	<script src="./scripts/index.js" type="module"></script>
-	<script src="./scripts/nav.js" type="module"></script>
-	<script src="./scripts/home-page.js" type="module"></script>
-	<script src="./scripts/cities-page.js" type="module"></script>
-	<script src="./scripts/interests-page.js" type="module"></script>
-	<script src="./scripts/fetching.js" type="module"></script>
-	<script src="./scripts/search.js" type="module"></script>
-	<script src="./scripts/results.js" type="module"></script>
+  <!-- Endpoint 2 -->
+  <div class="endpoint" onclick="toggle(this)">
+    <div class="endpoint-header">
+      <div class="endpoint-left">
+        <span class="method-badge post">POST</span>
+        <span class="endpoint-path">/api/cities</span>
+      </div>
+      <span class="endpoint-summary">AI analysis for multiple cities + interests</span>
+      <span class="chevron">&#9658;</span>
+    </div>
+    <div class="endpoint-body">
+      <div class="section-label">Request Body</div>
+      <div class="code-block"><span class="code-punct">{</span>
+  <span class="code-key">"cities"</span><span class="code-punct">:</span> <span class="code-str">["Berlin", "Tokyo"]</span><span class="code-punct">,</span>
+  <span class="code-key">"interests"</span><span class="code-punct">:</span> <span class="code-str">["metal", "automation"]</span>
+<span class="code-punct">}</span></div>
+
+      <div class="section-label">Parameters</div>
+      <div class="param-row">
+        <span class="param-name">cities</span>
+        <span class="param-type">string[]</span>
+        <span class="param-desc">List of city names to analyze in batch</span>
+        <span class="param-required">required</span>
+      </div>
+      <div class="param-row">
+        <span class="param-name">interests</span>
+        <span class="param-type">string[]</span>
+        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+        <span class="param-required">required</span>
+      </div>
+
+      <div class="section-label">Response — 200</div>
+      <div class="code-block">Array of Gemini-generated city + interest profile objects</div>
+    </div>
+  </div>
+
+  <!-- Endpoint 3 — open by default -->
+  <div class="endpoint open" onclick="toggle(this)">
+    <div class="endpoint-header">
+      <div class="endpoint-left">
+        <span class="method-badge post">POST</span>
+        <span class="endpoint-path">/api/interests</span>
+      </div>
+      <span class="endpoint-summary">AI analysis based on interests alone</span>
+      <span class="chevron">&#9658;</span>
+    </div>
+    <div class="endpoint-body">
+      <div class="section-label">Request Body</div>
+      <div class="code-block"><span class="code-punct">{</span>
+  <span class="code-key">"interests"</span><span class="code-punct">:</span> <span class="code-str">["metal", "automation"]</span>
+<span class="code-punct">}</span></div>
+
+      <div class="section-label">Parameters</div>
+      <div class="param-row">
+        <span class="param-name">interests</span>
+        <span class="param-type">string[]</span>
+        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+        <span class="param-required">required</span>
+      </div>
+
+      <div class="section-label">Response — 200</div>
+      <div class="code-block">Gemini-generated interest profile object</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggle(el) {
+    // Prevent toggling when clicking inside the body
+    el.classList.toggle('open');
+  }
+</script>
+
+
+	</div>
+</main>
+
+<video id="background" autoplay muted loop>
+	<source src="./backgrounds/globe-whole.mp4" type="video/mp4">
+</video>
+<div id ="bg"></div>
+
+<script src="./scripts/index.js" type="module"></script>
+<script src="./scripts/nav.js" type="module"></script>
+<script src="./scripts/home-page.js" type="module"></script>
+<script src="./scripts/search-pages.js" type="module"></script>
+<script src="./scripts/fetching.js" type="module"></script>
+<script src="./scripts/search.js" type="module"></script>
+<script src="./scripts/results.js" type="module"></script>
 </body>
 </html>
