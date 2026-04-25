@@ -2,7 +2,8 @@ export const VisualizeData = (parsedData) =>
 {
 	console.log("LOGGING PARSED DATA", parsedData);
 
-	let resultsPage = document.getElementById("results");
+	let resultsPage = document.getElementById("results-container");
+	resultsPage.innerHTML = "";
 
 	for (let i = 0; i < parsedData.length; i++)
 	{
@@ -33,12 +34,12 @@ export const VisualizeData = (parsedData) =>
 			const interestName = interest.name;
 			const interestText = interest.text;
 
-			let infoName = document.createElement("h2");
-			infoName.classList.add("info-name");
-			infoName.textContent = interestName;
-			infoDetails.appendChild(infoName);
+			let infoInt = document.createElement("h2");
+			infoInt.classList.add("info-int");
+			infoInt.textContent = interestName;
+			infoDetails.appendChild(infoInt);
 
-			let infoText = document.createElement("h2");
+			let infoText = document.createElement("p");
 			infoText.classList.add("info-text");
 			infoText.textContent = interestText;
 			infoDetails.appendChild(infoText);

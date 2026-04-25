@@ -9,6 +9,9 @@ buttonSearch.addEventListener("click", () =>
 {
 	LoadPage("results");
 
+	let resultsPage = document.getElementById("results-container");
+	resultsPage.innerHTML = "";
+
 	(async () =>
 	{
 		const fetchedCities = await FetchCities(ParseSearches());

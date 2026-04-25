@@ -170,3 +170,51 @@
 
 	cursor: pointer;
 }
+
+.page .result
+{
+	width: 100%;
+
+	margin-bottom: 16px;
+
+	border-radius: 8px;
+}
+
+.page .result .info
+{
+	padding: 32px;
+
+	border-radius: 8px;
+
+	background-color: #fbe7a1ee;
+}
+
+.page .result .info .info-name
+{
+	font-size: 32px;
+	text-align: left;
+
+	margin-bottom: 16px;
+
+	color: #23b3be;
+}
+
+.page .result .info .info-holder
+{
+	padding-bottom: 16px;
+}
+
+.page .result .info .info-int
+{
+	text-align: left;
+
+	color: black;
+}
+
+.page .result .info .info-text
+{
+	text-align: left;
+	font-size: 16px;
+
+	color: black;
+}

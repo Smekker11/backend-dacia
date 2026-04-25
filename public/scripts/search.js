@@ -20,9 +20,11 @@ export const ParseSearches = () =>
 
 export const DeleteSearches = () =>
 {
-	for (let i = 0; i < searchCities.length; i++)
-		RemoveCitySearch(searchCities[i].name);
-	searchInterests.forEach(element => { RemoveInterestSearch(element.name); });
+	searchCities = [];
+	searchInterests = [];
+
+	cardsHolderCities.innerHTML = "";
+	cardsHolderInterests.innerHTML = "";
 }
 
 const AddCitySearch = (cityName) =>
