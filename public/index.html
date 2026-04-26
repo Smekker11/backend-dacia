@@ -103,25 +103,12 @@
 		<!-- TODO: add cards according to results**** -->
 	</div>
 
-	<div id="city-best-interests" class="page hidden">
-		<h1>[X] is better at</h1>
-
-		<!-- TODO: add cards according to results*** -->
-	</div>
-
 	<div id="skynet" class="page hidden">
 		<h1>Skynet</h1>
 
 		<div class="search-bar" style="margin: 16px 0px">
 			<input id="skynet-params" type="text">
 		</div>
-
-
-
-
-
-
-
 
 
 <div class="ac-wrap">
@@ -267,29 +254,11 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		
 	</div>
 
 	<div id="account" class="page hidden">
 		<h1>Log in</h1>
-
-
-
 
 
 <div class="lf-wrap">
@@ -545,69 +514,17 @@
 
 </div>
 
-<script>
-  // loginForm.submitted is set to true when Sign In is clicked with a valid username.
-  // Listen for the 'lf:login' custom event on document for a callback-style hook:
-  //   document.addEventListener('lf:login', (e) => console.log(e.detail.username));
-  const loginForm = { submitted: false };
-
-  function lfSubmit() {
-    const usernameInput = document.getElementById('lf-username');
-    const usernameField = usernameInput.closest('.lf-field');
-
-    if (usernameInput.value.trim() !== 'admin') {
-      usernameField.classList.add('lf-has-error');
-      return;
-    }
-
-    usernameField.classList.remove('lf-has-error');
-    loginForm.submitted = true;
-    document.dispatchEvent(new CustomEvent('lf:login', {
-      detail: { username: usernameInput.value.trim() }
-    }));
-
-    const btn = document.getElementById('lf-submit');
-    btn.classList.add('lf-loading');
-    btn.disabled = true;
-
-    setTimeout(() => {
-      btn.classList.remove('lf-loading');
-      btn.disabled = false;
-      // Replace with your actual login logic
-
-		
-
-    }, 1800);
-  }
-
-  document.getElementById('lf-username').addEventListener('input', function() {
-    this.closest('.lf-field').classList.remove('lf-has-error');
-  });
-
-  document.getElementById('lf-username').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('lf-password').focus();
-  });
-  document.getElementById('lf-password').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') lfSubmit();
-  });
-</script>
-
-
-
-
-
-
-
-
 </div>
 
 	</div>
+
+
 
 	<div id="info" class="page hidden">
 		<h1>About us</h1>
 
 		<div class="company-profile" style="width: 100%;">
-			<blockquote style="font-size: 32px; color: #fbe7a1; font-style: italic; margin: 16px 0px; text-align: center;">
+			<blockquote id="blockquote" style="color: #fbe7a1; font-style: italic; margin: 16px 0px; text-align: center;">
 				<strong>"Your next chapter, on an Active Globe."</strong>
 			</blockquote>
 
@@ -775,8 +692,7 @@
 
 <script>
   function toggle(el) {
-	// Prevent toggling when clicking inside the body
-	el.classList.toggle('open');
+	  el.classList.toggle('open');
   }
 </script>
 
@@ -796,5 +712,6 @@
 <script src="./scripts/skynet.js" type="module"></script>
 <script src="./scripts/fetching.js" type="module"></script>
 <script src="./scripts/search.js" type="module"></script>
+<script src="./scripts/typing.js" type="module"></script>
 </body>
 </html>

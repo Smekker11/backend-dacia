@@ -1,5 +1,7 @@
 import { LoadPage } from "./index.js";
 import { DeleteSearches } from "./search.js";
+import { VisualizeData } from "./search-pages.js";
+import { FetchInterests } from "./fetching.js";
 
 const buttonNavHome = document.getElementById("nav-home");
 
@@ -14,7 +16,13 @@ const buttonNavBestEdu = document.getElementById("nav-edu");
 
 buttonNavBestEdu.addEventListener("click", () =>
 {
-	// LoadPage("interest-best-cities");
+	LoadPage("interest-best-cities");
+
+	(async () =>
+	{
+		const fetchedInterests = await FetchInterests({ "interests": ["Education"] });
+		VisualizeData(fetchedInterests);
+	})();
 
 	DeleteSearches();
 });
@@ -23,7 +31,13 @@ const buttonNavBestWork = document.getElementById("nav-work");
 
 buttonNavBestWork.addEventListener("click", () =>
 {
-	// LoadPage("interest-best-cities");
+	LoadPage("interest-best-cities");
+
+	(async () =>
+	{
+		const fetchedInterests = await FetchInterests({ "interests": ["Work"] });
+		VisualizeData(fetchedInterests);
+	})();
 
 	DeleteSearches();
 });
@@ -32,7 +46,13 @@ const buttonNavBestTravel = document.getElementById("nav-travel");
 
 buttonNavBestTravel.addEventListener("click", () =>
 {
-	// LoadPage("interest-best-cities");
+	LoadPage("interest-best-cities");
+
+	(async () =>
+	{
+		const fetchedInterests = await FetchInterests({ "interests": ["Travel"] });
+		VisualizeData(fetchedInterests);
+	})();
 
 	DeleteSearches();
 });

@@ -1,6 +1,7 @@
 import { LoadPage } from "./index.js";
 import { DeleteSearches, ParseSearches } from "./search.js";
 import { FetchCities } from "./fetching.js";
+import { TypeWord } from "./typing.js";
 
 const buttonSearchCity = document.getElementById("search-cities-icon");
 
@@ -27,7 +28,7 @@ buttonSearchInterest.addEventListener("click", () =>
 	DeleteSearches();
 });
 
-const VisualizeData = (parsedData) =>
+export const VisualizeData = (parsedData) =>
 {
 	console.log("LOGGING PARSED DATA", parsedData);
 
@@ -70,8 +71,9 @@ const VisualizeData = (parsedData) =>
 
 			let infoText = document.createElement("p");
 			infoText.classList.add("info-text");
-			infoText.textContent = interestText;
 			infoDetails.appendChild(infoText);
+		
+			TypeWord(infoText, interestText, 100);
 		}
 	}
 };

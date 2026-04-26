@@ -145,11 +145,16 @@
 	text-align: center;
 }
 
+.page #blockquote
+{
+	font-size: 32px;
+}
+
 .page .search-bar
 {
 	display: flex;
 
-	justify-self: center;	
+	justify-self: center;
 
 	width: 60%;
 	height: 48px;
@@ -226,4 +231,52 @@
 	font-size: 18px;
 
 	color: black;
+}
+
+@media screen and (max-width: 720px)
+{
+	.page, .page#home
+	{
+		padding: 0px 8px;
+		padding-left: calc(64px + 16px);
+	}
+
+	.page h1
+	{
+		font-size: 32px;
+	}
+
+	.page h2
+	{
+		font-size: 14px;
+	}
+
+	.page .search-bar
+	{
+		width: 100%;
+		height: 36px;
+	}
+
+	.page .search-bar input
+	{
+		width: calc(100% - 20px);
+
+		font-size: 14px;
+	}
+
+	.page .search-bar img
+	{
+		height: 20px;
+		width: 20px;
+	}
+
+	.page #blockquote
+	{
+		font-size: 20px;
+	}
+
+	.page #home-message
+	{
+		text-align: center;
+	}
 }
