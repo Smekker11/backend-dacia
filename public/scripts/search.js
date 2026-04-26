@@ -21,7 +21,15 @@ export const DeleteSearches = () =>
 
 	cardsHolderCities.innerHTML = "";
 	cardsHolderInterests.innerHTML = "";
-}
+};
+
+export const DeleteResults = () =>
+{
+	document.getElementById("results-container").innerHTML = "";
+	document.getElementById("best-container").innerHTML = "";
+
+	document.getElementById("results-title").innerHTML = "Best in";
+};
 
 const AddCitySearch = (cityName) =>
 {

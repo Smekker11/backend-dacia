@@ -1,5 +1,6 @@
 import { LoadPage } from './index.js';
 import { FetchSkynet } from './fetching.js';
+import { TypeWord } from './typing.js';
 
 const loginForm = { submitted: false };
 
@@ -82,4 +83,8 @@ const VisualizeSkynet = (body, result) =>
 
 	let acResult = document.getElementById("ac-result");
 	acResult.innerText = JSON.stringify(result);
+	/*
+	const text = JSON.stringify(result);
+	TypeWord(acResult, text, 100);
+	*/
 };

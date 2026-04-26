@@ -1,85 +1,98 @@
 import { LoadPage } from "./index.js";
-import { DeleteSearches } from "./search.js";
-import { VisualizeData } from "./search-pages.js";
+import { DeleteSearches, DeleteResults } from "./search.js";
+import { VisualizeBest } from "./search-pages.js";
 import { FetchInterests } from "./fetching.js";
 
 const buttonNavHome = document.getElementById("nav-home");
 
 buttonNavHome.addEventListener("click", () =>
 {
-	LoadPage("home");
-
 	DeleteSearches();
+	DeleteResults();
+
+	LoadPage("home");
 });
 
 const buttonNavBestEdu = document.getElementById("nav-edu");
 
 buttonNavBestEdu.addEventListener("click", () =>
 {
+	DeleteSearches();
+	DeleteResults();
+
 	LoadPage("interest-best-cities");
+
+	document.getElementById("best-container").innerHTML = "";
 
 	(async () =>
 	{
 		const fetchedInterests = await FetchInterests({ "interests": ["Education"] });
-		VisualizeData(fetchedInterests);
+		VisualizeBest(fetchedInterests, "Education");
 	})();
-
-	DeleteSearches();
 });
 
 const buttonNavBestWork = document.getElementById("nav-work");
 
 buttonNavBestWork.addEventListener("click", () =>
 {
+	DeleteSearches();
+	DeleteResults();
+
 	LoadPage("interest-best-cities");
+
+	document.getElementById("best-container").innerHTML = "";
 
 	(async () =>
 	{
 		const fetchedInterests = await FetchInterests({ "interests": ["Work"] });
-		VisualizeData(fetchedInterests);
+		VisualizeBest(fetchedInterests, "Work");
 	})();
-
-	DeleteSearches();
 });
 
 const buttonNavBestTravel = document.getElementById("nav-travel");
 
 buttonNavBestTravel.addEventListener("click", () =>
 {
+	DeleteSearches();
+	DeleteResults();
+
 	LoadPage("interest-best-cities");
+
+	document.getElementById("best-container").innerHTML = "";
 
 	(async () =>
 	{
 		const fetchedInterests = await FetchInterests({ "interests": ["Travel"] });
-		VisualizeData(fetchedInterests);
+		VisualizeBest(fetchedInterests, "Travel");
 	})();
-
-	DeleteSearches();
 });
 
 const buttonNavAccount = document.getElementById("nav-account");
 
 buttonNavAccount.addEventListener("click", () =>
 {
-	LoadPage("account");
-
 	DeleteSearches();
+	DeleteResults();
+
+	LoadPage("account");
 });
 
 const buttonNavInfo = document.getElementById("nav-info");
 
 buttonNavInfo.addEventListener("click", () =>
 {
-	LoadPage("info");
-
 	DeleteSearches();
+	DeleteResults();
+
+	LoadPage("info");
 });
 
 const buttonNavApi = document.getElementById("nav-api");
 
 buttonNavApi.addEventListener("click", () =>
 {
-	LoadPage("api");
-
 	DeleteSearches();
+	DeleteResults();
+
+	LoadPage("api");
 });
