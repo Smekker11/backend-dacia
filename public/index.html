@@ -109,6 +109,47 @@
 
 <div class="api-docs" id="api-docs">
 
+  <!-- Endpoint Skynet -->
+<div class="endpoint" onclick="toggle(this)">
+  <div class="endpoint-header">
+    <div class="endpoint-left">
+      <span class="method-badge post">POST</span>
+      <span class="endpoint-path">/api/skynetapi</span>
+    </div>
+    <span class="endpoint-summary"> Advertising S.K.Y.N.E.T. profiling by interests</span>
+    <span class="chevron">&#9658;</span>
+  </div>
+  <div class="endpoint-body">
+    <div class="auth-note">⚠ Requires <code>Authorization: Bearer &lt;API_TOKEN&gt;</code> header</div>
+
+    <div class="section-label">Request Body</div>
+    <div class="code-block"><span class="code-punct">{</span>
+  <span class="code-key">"param"</span><span class="code-punct">:</span> <span class="code-str">["metal", "luxury_assets"]</span>
+<span class="code-punct">}</span></div>
+
+    <div class="section-label">Parameters</div>
+    <div class="param-row">
+      <span class="param-name">param</span>
+      <span class="param-type">string[]</span>
+      <span class="param-desc">Interest tags to match against stored user profiles</span>
+      <span class="param-required">required</span>
+    </div>
+
+    <div class="section-label">Response — 200</div>
+    <div class="code-block"><span class="code-punct">{</span>
+  <span class="code-key">"api_status"</span><span class="code-punct">:</span> <span class="code-str">"OPERATIONAL"</span><span class="code-punct">,</span>
+  <span class="code-key">"profiling_summary"</span><span class="code-punct">:</span> <span class="code-punct">{</span>
+    <span class="code-key">"target_id"</span><span class="code-punct">:</span> <span class="code-str">"..."</span><span class="code-punct">,</span>
+    <span class="code-key">"ip_origin"</span><span class="code-punct">:</span> <span class="code-str">"..."</span><span class="code-punct">,</span>
+    <span class="code-key">"behavioral_analysis"</span><span class="code-punct">:</span> <span class="code-str">{ ... }</span>
+  <span class="code-punct">}</span>
+<span class="code-punct">}</span></div>
+
+    <div class="section-label">Response — 401</div>
+    <div class="code-block"><span class="code-punct">{</span> <span class="code-key">"error"</span><span class="code-punct">:</span> <span class="code-str">"Unauthorized"</span> <span class="code-punct">}</span></div>
+  </div>
+</div>
+
   <!-- Endpoint 1 -->
   <div class="endpoint" onclick="toggle(this)">
     <div class="endpoint-header">
@@ -116,7 +157,7 @@
         <span class="method-badge post">POST</span>
         <span class="endpoint-path">/api/city/:city</span>
       </div>
-      <span class="endpoint-summary">AI analysis for a single city + interests</span>
+      <span class="endpoint-summary">AI analysis for a single city.</span>
       <span class="chevron">&#9658;</span>
     </div>
     <div class="endpoint-body">
@@ -135,12 +176,12 @@
       <div class="param-row">
         <span class="param-name">interests</span>
         <span class="param-type">string[]</span>
-        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+        <span class="param-desc">Interest tags to analyze.</span>
         <span class="param-required">required</span>
       </div>
 
       <div class="section-label">Response — 200</div>
-      <div class="code-block">Gemini-generated city + interest profile object</div>
+      <div class="code-block"><span class="code-str">text:{AI insight "city" + "interests" profile object}</span></div>
     </div>
   </div>
 
@@ -176,7 +217,7 @@
       </div>
 
       <div class="section-label">Response — 200</div>
-      <div class="code-block">Array of Gemini-generated city + interest profile objects</div>
+      <div class="code-block"><span class="code-str">Array[AI-generated "city" + "interest" matched profile objects]</span></div>
     </div>
   </div>
 
@@ -200,12 +241,12 @@
       <div class="param-row">
         <span class="param-name">interests</span>
         <span class="param-type">string[]</span>
-        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+        <span class="param-desc">Interest tags to analyze</span>
         <span class="param-required">required</span>
       </div>
 
       <div class="section-label">Response — 200</div>
-      <div class="code-block">Gemini-generated interest profile object</div>
+      <div class="code-block"><span class="code-str">Array[AI insight "city profile" objects]</span></div>
     </div>
   </div>
 
