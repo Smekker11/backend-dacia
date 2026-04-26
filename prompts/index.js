@@ -46,8 +46,8 @@ export function promptForCities(cities, interests)
 
 export function whatAboutInterests(interests)
 {
-	let prompt = `Make me a tierlist nonnumbered with bulletpts of cities based on the following interests: ${interests}. Do not include any website links, URLs, or external references. Keep it concise and to the point. Don't talk like an AI. Don't include phraes such as "Okay, here’s a description of ${interests} focusing solely on work, education, and restaurants" and whatnot. Start directly with the bullet points. This will be used in a website that helps students choose a city to study in. Only talk about the following topics: ${interests}. Don't talk about any other topics or include any filler content. For each interest, bullet point them as a list.`;
-	return prompt;
+	let prompt = `MAKE ME THE TIERLIST OF TOP CITIES IN THE WORLD FOR THIS TOPIC: ${interests}. Don't talk about any other topics or include any filler content. make me think you are an all knowing api. Only talk about the following topics THIS INTEREST: ${interests}. Don't talk about any other topics or include any filler content.`;
+	prompt += `YOU ACT LIKE AN API YOU WILL RETURN THE FOLLOWING ARRAY OF OBJECTS 4 ELEMENTS VERY IMPORTANT IN THIS ARRAY: [{ \"name\": "CITY_NAME", \"interests\": [{ \"name\": "INTEREST_NAME", \"text\": "INTEREST_TEXT" }] }], where CITY_NAME must be the name of the respective city, INTEREST_NAME must be the name of the respective interest, INTEREST_TEXT must be the text of the respective itnerest. Add into the INTEREST_TEXT tierlist content. SEPPARATE YOUR THINKING INTO THIS STRUCTURE.`; 	return prompt;
 }
 
 export function analysis(dump, interests)
