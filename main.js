@@ -47,16 +47,32 @@ app.post('/api/skynetapi', async (req, res) =>
 		});
 
 		let geminiProfile = await generate(prompts.analysis(results, param));
+		console.log(geminiProfile);
 
 		try
-		{
-			res.json(JSON.parse(geminiProfile.candidates[0].content.parts[0].text));
-		}
-		catch (err)
-		{
-			console.warn('Gemini is in high demand');
-			res.status(500).json({ error: "Gemini is in high demand" });
-		}
+        {
+            const rawText = geminiProfile.candidates[0].content.parts[0].text;
+
+            try
+            {
+                res.json(JSON.parse(rawText));
+            }
+            catch (err)
+            {
+                /*
+                console.log(result);
+                console.log(rawText);
+                */
+
+                console.error(err);
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        }
+        catch (err)
+        {
+            console.warn('Gemini is in high demand');
+            res.status(500).json({ error: "Gemini is in high demand" });
+        }
 	}
 	catch (error)
 	{
@@ -70,6 +86,7 @@ app.post('/api/city/:city', async (req, res) =>
 	await handle(req, res, async () =>
 	{
 		let cityGenerate = await generate(prompts.promptForCity(req.params.city, req.body.interests));
+		console.log(cityGenerate);
 	
 		return cityGenerate;
 	});
@@ -87,17 +104,12 @@ app.post('/api/cities', async (req, res) =>
 		});
 
 		const result = await generate(prompts.promptForCities(req.body.cities, req.body.interests));
+		console.log(result);
 
 		try
 		{
 			const rawText = result.candidates[0].content.parts[0].text;
-		}
-		catch (err)
-		{
-			console.warn('Gemini is in high demand');
-			res.status(500).json({ error: "Gemini is in high demand" });
-		}
-
+			
 		try
 		{
 			res.json(JSON.parse(rawText));
@@ -112,6 +124,12 @@ app.post('/api/cities', async (req, res) =>
 			console.error(err);
 			res.status(500).json({ error: "Internal Server Error" });
 		}
+		}
+		catch (err)
+		{
+			console.warn('Gemini is in high demand');
+			res.status(500).json({ error: "Gemini is in high demand" });
+		}
 	}
 	catch (err)
 	{
@@ -122,12 +140,46 @@ app.post('/api/cities', async (req, res) =>
 
 app.post('/api/interests', async (req, res) =>
 {
-	await findInterests(req, res, async () =>
+	try
 	{
-		let intGenerate = await generate(prompts.whatAboutInterests(req.body.interests));
+		await UserInterests.create(
+		{
+			uniqueId: generateRandomId(),
+			ip: generateRandomIp(),
+			interests: req.body.interests
+		});
+	}
+	catch (err)
+	{
+		console.error('Error saving to database:', err);
+		return res.status(500).json({ error: 'Internal Server Error' });
+	}
 
-		return intGenerate;
-	});
+	let intGenerate = await generate(prompts.whatAboutInterests(req.body.interests));
+	console.log(intGenerate);
+    try{
+            const rawText = intGenerate.candidates[0].content.parts[0].text;
+
+            try
+            {
+                res.json(JSON.parse(rawText));
+            }
+            catch (err)
+            {
+                /*
+                console.log(result);
+                console.log(rawText);
+                */
+
+                console.error(err);
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        }
+        catch (err)
+        {
+            console.warn('Gemini is in high demand');
+            res.status(500).json({ error: "Gemini is in high demand" });
+        }
 });
 
 const server = app.listen(PORT, () => console.log(`API listening to http://localhost:${PORT}`));
