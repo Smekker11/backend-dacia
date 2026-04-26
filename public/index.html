@@ -9,7 +9,7 @@
 
 <html lang="en">
 <head>
-	<title>Activ Globe</title>
+	<title>Active Globe</title>
 	<link rel="icon" href="./icons/icon.ico" type="image/x-icon">
 
 	<meta charset="UTF-8">
@@ -24,6 +24,9 @@
 <nav id="nav">
 	<button id="nav-home">
 		<img src="./icons/home-2.svg"></img>
+	</button>
+	<button id="nav-account">
+		<img src="./icons/account-2.svg"></img>
 	</button>
 
 	<br>
@@ -40,6 +43,9 @@
 
 	<br>
 
+	<button id="nav-api">
+		<img src="./icons/api-2.svg"></img>
+	</button>
 	<button id="nav-info">
 		<img src="./icons/info-2.svg"></img>
 	</button>
@@ -52,7 +58,6 @@
 		<br>
 		<h2 id="home-message"></h2>
 		<button id="goto-pick-cities" class="button">Get started</button>
-		<a href="./info.html">goto info</a>
 		<br>
 	</div>
 
@@ -104,7 +109,40 @@
 		<!-- TODO: add cards according to results*** -->
 	</div>
 
+	<div id="account" class="page hidden">
+		<h1>Log in</h1>
+	</div>
+
 	<div id="info" class="page hidden">
+		<h1>About us</h1>
+
+		<div class="company-profile" style="width: 100%;">
+			<blockquote style="font-size: 32px; color: #fbe7a1; font-style: italic; margin: 16px 0px; text-align: center;">
+				<strong>"Your next chapter, on an Active Globe."</strong>
+			</blockquote>
+
+			<div style="width: 100%; background-color: #f8f6f033; border-radius: 8px; color: black; padding: 32px 16px; margin-bottom: 32px;">
+				<p style="padding-bottom: 12px; font-size: 20px;">We believe that relocating shouldn't just be a logistical task—it should be an exciting new beginning. Ethically, our foundation is built on absolute trust and quality, and our commitment to user satisfaction underscores every aspect of our operations.</p> 
+				<p style="padding-bottom: 12px; font-size: 20px;">With a robust growth strategy and a focus on innovation, user experience, and strategic growth, we anticipate reaching new heights in the coming year. We are actively shaping tomorrow by:</p>
+
+				<ul style="list-style-type: disc; margin-left: 20px; padding-left: 0; font-size: 20px;">
+					<li style="margin-bottom: 12px;"><strong>Listening to Our Community:</strong> We continuously enhance our product features based directly on user feedback.</li>
+					<li style="margin-bottom: 12px;"><strong>Building Powerful Partnerships:</strong> We are actively expanding our market reach through strategic partnerships. Establishing these key alliances is a primary focus for our third quarter, as they are vital for expanding our market presence and capabilities.</li>
+					<li style="margin-bottom: 12px;"><strong>Expanding Horizons:</strong> We are boldly exploring international market opportunities to bring our vision to the world.</li>
+					<li style="margin-bottom: 12px;"><strong>Accelerating Momentum:</strong> We are rapidly approaching our 10,000 user milestone, which is a strong indicator of growing demand. This momentum will culminate in a major campaign launch in our fourth quarter.</li>
+				</ul>
+			</div>
+
+			<!--
+			<div style="width: 100%; background-color: #f8f6f033; border-radius: 8px; color: black; padding: 16px;">
+				<p style="text-align: center;">Our growth</p>
+				<img src="./img/graph.png" width="100%"></img>
+			</div>
+			-->
+		</div>
+	</div>
+
+	<div id="api" class="page hidden">
 		<h1>API Endpoints</h1>
 
 <div class="api-docs" id="api-docs">
@@ -187,34 +225,34 @@
 
   <!-- Endpoint 2 -->
   <div class="endpoint" onclick="toggle(this)">
-    <div class="endpoint-header">
-      <div class="endpoint-left">
-        <span class="method-badge post">POST</span>
-        <span class="endpoint-path">/api/cities</span>
-      </div>
-      <span class="endpoint-summary">AI analysis for multiple cities + interests</span>
-      <span class="chevron">&#9658;</span>
-    </div>
-    <div class="endpoint-body">
-      <div class="section-label">Request Body</div>
-      <div class="code-block"><span class="code-punct">{</span>
+	<div class="endpoint-header">
+	  <div class="endpoint-left">
+		<span class="method-badge post">POST</span>
+		<span class="endpoint-path">/api/cities</span>
+	  </div>
+	  <span class="endpoint-summary">AI analysis for multiple cities + interests</span>
+	  <span class="chevron">&#9658;</span>
+	</div>
+	<div class="endpoint-body">
+	  <div class="section-label">Request Body</div>
+	  <div class="code-block"><span class="code-punct">{</span>
   <span class="code-key">"cities"</span><span class="code-punct">:</span> <span class="code-str">["Berlin", "Tokyo"]</span><span class="code-punct">,</span>
   <span class="code-key">"interests"</span><span class="code-punct">:</span> <span class="code-str">["metal", "automation"]</span>
 <span class="code-punct">}</span></div>
 
-      <div class="section-label">Parameters</div>
-      <div class="param-row">
-        <span class="param-name">cities</span>
-        <span class="param-type">string[]</span>
-        <span class="param-desc">List of city names to analyze in batch</span>
-        <span class="param-required">required</span>
-      </div>
-      <div class="param-row">
-        <span class="param-name">interests</span>
-        <span class="param-type">string[]</span>
-        <span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
-        <span class="param-required">required</span>
-      </div>
+	  <div class="section-label">Parameters</div>
+	  <div class="param-row">
+		<span class="param-name">cities</span>
+		<span class="param-type">string[]</span>
+		<span class="param-desc">List of city names to analyze in batch</span>
+		<span class="param-required">required</span>
+	  </div>
+	  <div class="param-row">
+		<span class="param-name">interests</span>
+		<span class="param-type">string[]</span>
+		<span class="param-desc">Interest tags to analyze — saved to DB with random ID + IP</span>
+		<span class="param-required">required</span>
+	  </div>
 
       <div class="section-label">Response — 200</div>
       <div class="code-block"><span class="code-str">Array[AI-generated "city" + "interest" matched profile objects]</span></div>
@@ -223,17 +261,17 @@
 
   <!-- Endpoint 3 — open by default -->
   <div class="endpoint open" onclick="toggle(this)">
-    <div class="endpoint-header">
-      <div class="endpoint-left">
-        <span class="method-badge post">POST</span>
-        <span class="endpoint-path">/api/interests</span>
-      </div>
-      <span class="endpoint-summary">AI analysis based on interests alone</span>
-      <span class="chevron">&#9658;</span>
-    </div>
-    <div class="endpoint-body">
-      <div class="section-label">Request Body</div>
-      <div class="code-block"><span class="code-punct">{</span>
+	<div class="endpoint-header">
+	  <div class="endpoint-left">
+		<span class="method-badge post">POST</span>
+		<span class="endpoint-path">/api/interests</span>
+	  </div>
+	  <span class="endpoint-summary">AI analysis based on interests alone</span>
+	  <span class="chevron">&#9658;</span>
+	</div>
+	<div class="endpoint-body">
+	  <div class="section-label">Request Body</div>
+	  <div class="code-block"><span class="code-punct">{</span>
   <span class="code-key">"interests"</span><span class="code-punct">:</span> <span class="code-str">["metal", "automation"]</span>
 <span class="code-punct">}</span></div>
 
@@ -254,8 +292,8 @@
 
 <script>
   function toggle(el) {
-    // Prevent toggling when clicking inside the body
-    el.classList.toggle('open');
+	// Prevent toggling when clicking inside the body
+	el.classList.toggle('open');
   }
 </script>
 

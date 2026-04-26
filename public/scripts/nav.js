@@ -37,6 +37,15 @@ buttonNavBestTravel.addEventListener("click", () =>
 	DeleteSearches();
 });
 
+const buttonNavAccount = document.getElementById("nav-account");
+
+buttonNavAccount.addEventListener("click", () =>
+{
+	LoadPage("account");
+
+	DeleteSearches();
+});
+
 const buttonNavInfo = document.getElementById("nav-info");
 
 buttonNavInfo.addEventListener("click", () =>
@@ -46,3 +55,11 @@ buttonNavInfo.addEventListener("click", () =>
 	DeleteSearches();
 });
 
+const buttonNavApi = document.getElementById("nav-api");
+
+buttonNavApi.addEventListener("click", () =>
+{
+	LoadPage("api");
+
+	DeleteSearches();
+});
