@@ -4,6 +4,13 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "node main.js",
+    "dev": "node main.js",
+    "install-setup": "chmod +x install.sh && ./install.sh",
+    "docker:build": "docker build -t activ-globe:latest .",
+    "docker:run": "docker run -p 80:80 --env-file .env activ-globe:latest",
+    "docker:compose:up": "docker-compose up -d",
+    "docker:compose:down": "docker-compose down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  activ-globe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-80}:80"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - PORT=80
+      - API_TOKEN=${API_TOKEN}
+    volumes:
+      - ./db:/app/db
+      - ./public/config.json:/app/public/config.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:80', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 40s
+    networks:
+      - activ-globe-network
+
+networks:
+  activ-globe-network:
+    driver: bridge
