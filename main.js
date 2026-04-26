@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import { generate } from './gemini.js';
 import { UserInterests,sequelize } from './db-instance.js';
 import { handle, findInterests, generateRandomId, generateRandomIp } from './methods.api.js';
+import { error } from 'console';
 
 dotenv.config();
 
@@ -26,6 +27,9 @@ app.post('/api/skynetapi', async (req, res) =>
 {
 	const apiToken = req.headers['authorization'];
 
+	console.log(apiToken);
+	console.log(VALID_API_TOKEN);
+
 	if (!apiToken || apiToken !== `Bearer ${VALID_API_TOKEN}`)
 		return res.status(401).json({ error: 'Unauthorized' });
 
@@ -43,7 +47,16 @@ app.post('/api/skynetapi', async (req, res) =>
 		});
 
 		let geminiProfile = await generate(prompts.analysis(results, param));
-		res.json(JSON.parse(geminiProfile.candidates[0].content.parts[0].text));
+
+		try
+		{
+			res.json(JSON.parse(geminiProfile.candidates[0].content.parts[0].text));
+		}
+		catch (err)
+		{
+			console.warn('Gemini is in high demand');
+			res.status(500).json({ error: "Gemini is in high demand" });
+		}
 	}
 	catch (error)
 	{
@@ -56,7 +69,9 @@ app.post('/api/city/:city', async (req, res) =>
 {
 	await handle(req, res, async () =>
 	{
-		return await generate(prompts.promptForCity(req.params.city, req.body.interests));
+		let cityGenerate = await generate(prompts.promptForCity(req.params.city, req.body.interests));
+	
+		return cityGenerate;
 	});
 });
 
@@ -72,7 +87,16 @@ app.post('/api/cities', async (req, res) =>
 		});
 
 		const result = await generate(prompts.promptForCities(req.body.cities, req.body.interests));
-		const rawText = result.candidates[0].content.parts[0].text;
+
+		try
+		{
+			const rawText = result.candidates[0].content.parts[0].text;
+		}
+		catch (err)
+		{
+			console.warn('Gemini is in high demand');
+			res.status(500).json({ error: "Gemini is in high demand" });
+		}
 
 		try
 		{
@@ -100,7 +124,9 @@ app.post('/api/interests', async (req, res) =>
 {
 	await findInterests(req, res, async () =>
 	{
-		return await generate(prompts.whatAboutInterests(req.body.interests));
+		let intGenerate = await generate(prompts.whatAboutInterests(req.body.interests));
+
+		return intGenerate;
 	});
 });
 

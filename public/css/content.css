@@ -74,7 +74,7 @@
 	overflow-y: auto;
 }
 
-.page#info
+.page#api, .page#info
 {
 	display: block;
 
@@ -148,6 +148,8 @@
 .page .search-bar
 {
 	display: flex;
+
+	justify-self: center;	
 
 	width: 60%;
 	height: 48px;

@@ -2,24 +2,25 @@ export const baseURL = window.location.origin;
 
 export const config = await fetch("./../config.json").then(r => r.json());
 
-export const FetchSkynet = () => fetch(`${baseURL}/api/skynetapi`,
+export const FetchSkynet = (skynetBody) =>
+fetch(`${window.location.origin}/api/skynetapi`,
 {
 	method: "POST",
 	headers:
 	{
 		"Content-Type": "application/json",
-		"Authorization": `Bearer ${config.API_TOKEN}`
+		"authorization": `Bearer ${config.API_TOKEN}`
 	},
-	body: JSON.stringify({ param: ["Culture"] })
+	body: JSON.stringify(skynetBody)
 })
 	.then(response =>
 	{
-		response.json()
+		return response.json()
 	})
 	.then(data =>
 	{
 		console.warn("Response:", data);
-		return data.json();
+		return data;
 	})
 	.catch(error =>
 	{
